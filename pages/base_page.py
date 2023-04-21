@@ -54,24 +54,12 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
-    def search_product(self, text):
-        search_field = self.browser.find_element(*BasePageLocators.SEARCH_INPUT)
-        search_button = self.browser.find_element(*BasePageLocators.SEARCH_BUTTON)
-        search_field.send_keys(text)
-        search_button.click()
-
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                      " probably unauthorised user"
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
-
-    def should_be_search_button(self):
-        assert self.is_element_present(*BasePageLocators.SEARCH_BUTTON), "Search button is not presented"
-
-    def should_be_search_field(self):
-        assert self.is_element_present(*BasePageLocators.SEARCH_INPUT), "Search field is not presented"
 
     def should_be_view_basket_button(self):
         assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "View Basket button is not presented"
