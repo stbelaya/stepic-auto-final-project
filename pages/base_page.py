@@ -13,6 +13,10 @@ class BasePage:
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+    def fill_text_field(self, how, what, value):
+        field = self.browser.find_element(how, what)
+        field.send_keys(value)
+
     def go_to_basket_page(self):
         self.should_be_view_basket_button()
         view_basket_button = self.browser.find_element(*BasePageLocators.VIEW_BASKET_BUTTON)
@@ -56,6 +60,10 @@ class BasePage:
         search_field.send_keys(text)
         search_button.click()
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
@@ -68,16 +76,16 @@ class BasePage:
     def should_be_view_basket_button(self):
         assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "View Basket button is not presented"
 
-    def solve_quiz_and_get_code(self):
-        alert = self.browser.switch_to.alert
-        x = alert.text.split(" ")[2]
-        answer = str(math.log(abs((12 * math.sin(float(x))))))
-        alert.send_keys(answer)
-        alert.accept()
-        try:
-            alert = self.browser.switch_to.alert
-            alert_text = alert.text
-            print(f"Your code: {alert_text}")
-            alert.accept()
-        except NoAlertPresentException:
-            print("No second alert presented")
+    # def solve_quiz_and_get_code(self):
+    #     alert = self.browser.switch_to.alert
+    #     x = alert.text.split(" ")[2]
+    #     answer = str(math.log(abs((12 * math.sin(float(x))))))
+    #     alert.send_keys(answer)
+    #     alert.accept()
+    #     try:
+    #         alert = self.browser.switch_to.alert
+    #         alert_text = alert.text
+    #         print(f"Your code: {alert_text}")
+    #         alert.accept()
+    #     except NoAlertPresentException:
+    #         print("No second alert presented")

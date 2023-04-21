@@ -7,6 +7,7 @@ class BasePageLocators:
     SEARCH_INPUT = (By.CSS_SELECTOR, "input[type='search']")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "input[type='submit']")
     VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, ".basket-mini .btn.btn-default[href]")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators:
@@ -18,6 +19,12 @@ class BasketPageLocators:
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+    EMAIL_FIELD = (By.CSS_SELECTOR, "#id_registration-email")
+    PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password1")
+    CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password2")
+    REGISTER_BUTTON = (By.NAME, "registration_submit")
+
+    LOGIN_URL = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
 class MainPageLocators:
