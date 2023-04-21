@@ -4,6 +4,8 @@ from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
 
+    LOGIN_URL = "http://selenium1py.pythonanywhere.com/accounts/login/"
+
     def register_new_user(self, email, password):
         self.fill_text_field(*LoginPageLocators.EMAIL_FIELD, email)
         self.fill_text_field(*LoginPageLocators.PASSWORD_FIELD, password)

@@ -4,6 +4,8 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
+    PRODUCT_PAGE1 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+
     def press_button_add_to_basket(self):
         add_to_basket = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_to_basket.click()

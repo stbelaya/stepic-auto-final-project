@@ -1,7 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import math
 
 from .locators import BasePageLocators
 
@@ -29,7 +28,8 @@ class BasePage:
 
     def is_disappeared(self, how, what, timeout=4):
         try:
-            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+            WebDriverWait(driver=self.browser, timeout=timeout, poll_frequency=1,
+                          ignored_exceptions=[TimeoutException]). \
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
@@ -75,17 +75,3 @@ class BasePage:
 
     def should_be_view_basket_button(self):
         assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "View Basket button is not presented"
-
-    # def solve_quiz_and_get_code(self):
-    #     alert = self.browser.switch_to.alert
-    #     x = alert.text.split(" ")[2]
-    #     answer = str(math.log(abs((12 * math.sin(float(x))))))
-    #     alert.send_keys(answer)
-    #     alert.accept()
-    #     try:
-    #         alert = self.browser.switch_to.alert
-    #         alert_text = alert.text
-    #         print(f"Your code: {alert_text}")
-    #         alert.accept()
-    #     except NoAlertPresentException:
-    #         print("No second alert presented")

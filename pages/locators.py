@@ -24,12 +24,6 @@ class LoginPageLocators:
     CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTER_BUTTON = (By.NAME, "registration_submit")
 
-    LOGIN_URL = "http://selenium1py.pythonanywhere.com/accounts/login/"
-
-
-class MainPageLocators:
-    pass
-
 
 class ProductPageLocators:
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
