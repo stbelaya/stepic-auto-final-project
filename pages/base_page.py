@@ -13,7 +13,13 @@ class BasePage:
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+    def go_to_basket_page(self):
+        self.should_be_view_basket_button()
+        view_basket_button = self.browser.find_element(*BasePageLocators.VIEW_BASKET_BUTTON)
+        view_basket_button.click()
+
     def go_to_login_page(self):
+        self.should_be_login_link()
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
 
@@ -58,6 +64,9 @@ class BasePage:
 
     def should_be_search_field(self):
         assert self.is_element_present(*BasePageLocators.SEARCH_INPUT), "Search field is not presented"
+
+    def should_be_view_basket_button(self):
+        assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "View Basket button is not presented"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
