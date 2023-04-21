@@ -23,3 +23,5 @@ class ProductPageLocators:
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    SEARCH_INPUT = (By.CSS_SELECTOR, "input[type='search']")
+    SEARCH_BUTTON = (By.CSS_SELECTOR, "input[type='submit']")
