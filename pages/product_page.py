@@ -12,6 +12,7 @@ class ProductPage(BasePage):
         self.should_be_message_that_product_added_to_basket()
         self.should_be_product_name_in_message()
         self.should_be_message_with_basket_total()
+        self.should_be_total_in_message_equal_to_product_price()
 
     def should_be_message_that_product_added_to_basket(self):
         assert self.is_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
