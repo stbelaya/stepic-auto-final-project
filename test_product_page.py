@@ -139,7 +139,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 
 
 @pytest.mark.need_review
-def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     """
     1. Гость открывает страницу товара
     2. Переходит в корзину по кнопке в шапке сайта

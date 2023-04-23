@@ -30,7 +30,9 @@ def browser(request):
     # if option headless is added to command, start browser in headless (not visible) mode
     if headless:
         options.add_argument('--headless')
+        options.add_argument("--window-size=1920x1080")
         options_firefox.add_argument('--headless')
+        options_firefox.add_argument("--window-size=1920x1080")
     if browser_name == "chrome":
         # set added options to browser (chrome)
         browser = webdriver.Chrome(options=options)
