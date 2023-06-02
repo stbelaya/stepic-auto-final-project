@@ -31,7 +31,7 @@ class TestGuestAddToBasketFromProductPage:
         1. Открываем страницу товара
         2. Добавляем товар в корзину
         Ожидаемый результат:
-        Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+        Нет сообщения об успехе с помощью
         """
         page = ProductPage(browser, link)
         page.open()
@@ -46,7 +46,7 @@ class TestUserAddToBasketFromProductPage:
         1. Открываем страницу регистрации;
         2. Регистрируем нового пользователя;
         Ожидаемый результат:
-        Проверяем, что пользователь залогинен
+        Пользователь залогинен
         """
         page = LoginPage(browser, LoginPage.LOGIN_URL)
         page.open()
@@ -77,7 +77,7 @@ class TestUserAddToBasketFromProductPage:
         1. Открываем страницу товара
         2. Добавляем товар в корзину
         Ожидаемый результат:
-        Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+        Нет сообщения об успехе
         """
         page = ProductPage(browser, link)
         page.open()
@@ -89,7 +89,7 @@ def test_guest_cant_see_success_message(browser):
     """
     1. Открываем страницу товара
     Ожидаемый результат:
-    Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+    Нет сообщения об успехе
     """
     page = ProductPage(browser, link)
     page.open()
@@ -102,7 +102,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     1. Открываем страницу товара
     2. Добавляем товар в корзину
     Ожидаемый результат:
-    Проверяем, что нет сообщения об успехе с помощью is_disappeared
+    Нет сообщения об успехе (оно исчезает)
     """
     page = ProductPage(browser, link)
     page.open()
@@ -114,7 +114,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     """
     1. Гость открывает страницу товара
     Ожидаемый результат:
-    Ожидаем, что на странице есть ссылка логина
+    На странице есть ссылка логина
     """
     page = ProductPage(browser, link)
     page.open()
@@ -127,9 +127,9 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     1. Гость открывает страницу товара
     2. Переходит на страницу логина по ссылке в шапке сайта
     Ожидаемый результат:
-    1) Ожидаем, что в адресной строке содержится слово 'login'
-    2) Ожидаем, что на странице есть форма логина
-    3) Ожидаем, что на странице есть форма регистрации
+    1) В адресной строке содержится слово 'login'
+    2) На странице есть форма логина
+    3) На странице есть форма регистрации
     """
     page = ProductPage(browser, link)
     page.open()
@@ -144,8 +144,8 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     1. Гость открывает страницу товара
     2. Переходит в корзину по кнопке в шапке сайта
     Ожидаемый результат:
-    1) Ожидаем, что в корзине нет товаров
-    2) Ожидаем, что есть текст о том что корзина пуста
+    1) В корзине нет товаров
+    2) Есть текст о том что корзина пуста
     """
     page = ProductPage(browser, link)
     page.open()
