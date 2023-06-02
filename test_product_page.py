@@ -13,11 +13,11 @@ class TestGuestAddToBasketFromProductPage:
     @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, browser):
         """
-        1. Открываем страницу товара
-        2. Добавляем товар в корзину
+        Предусловия: Роль - гость.
+        1. Открыть страницу товара
+        2. Добавить товар в корзину
         Ожидаемый результат:
-        1) Сообщение о том, что товар добавлен в корзину. Название товара в сообщении должно совпадать с тем товаром,
-        который вы действительно добавили.
+        1) Сообщение о том, что товар добавлен в корзину. Название товара в сообщении совпадает с добавленным товаром.
         2) Сообщение со стоимостью корзины. Стоимость корзины совпадает с ценой товара.
         """
         page = ProductPage(browser, link)
@@ -28,10 +28,11 @@ class TestGuestAddToBasketFromProductPage:
     @pytest.mark.xfail(reason="known_issue, user sees success message, probably as designed")
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
         """
-        1. Открываем страницу товара
-        2. Добавляем товар в корзину
+        Предусловия: Роль - гость.
+        1. Открыть страницу товара
+        2. Добавить товар в корзину
         Ожидаемый результат:
-        Нет сообщения об успехе с помощью
+        Нет сообщения об успехе
         """
         page = ProductPage(browser, link)
         page.open()
@@ -43,8 +44,9 @@ class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         """
-        1. Открываем страницу регистрации;
-        2. Регистрируем нового пользователя;
+        Предусловия: Роль - гость.
+        1. Открыть страницу регистрации;
+        2. Зарегистрировать нового пользователя;
         Ожидаемый результат:
         Пользователь залогинен
         """
@@ -59,11 +61,11 @@ class TestUserAddToBasketFromProductPage:
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         """
-        1. Открываем страницу товара
-        2. Добавляем товар в корзину
+        Предусловия: Роль - пользователь, зарегистрированный в методе setup.
+        1. Открыть страницу товара
+        2. Добавить товар в корзину
         Ожидаемый результат:
-        1) Сообщение о том, что товар добавлен в корзину. Название товара в сообщении должно совпадать с тем товаром,
-        который вы действительно добавили.
+        1) Сообщение о том, что товар добавлен в корзину. Название товара в сообщении совпадает с добавленным товаром.
         2) Сообщение со стоимостью корзины. Стоимость корзины совпадает с ценой товара.
         """
         page = ProductPage(browser, link)
@@ -74,8 +76,9 @@ class TestUserAddToBasketFromProductPage:
     @pytest.mark.xfail(reason="known_issue, user sees success message, probably as designed")
     def test_user_cant_see_success_message_after_adding_product_to_basket(self, browser):
         """
-        1. Открываем страницу товара
-        2. Добавляем товар в корзину
+        Предусловия: Роль - пользователь, зарегистрированный в методе setup.
+        1. Открыть страницу товара
+        2. Добавить товар в корзину
         Ожидаемый результат:
         Нет сообщения об успехе
         """
@@ -87,7 +90,8 @@ class TestUserAddToBasketFromProductPage:
 
 def test_guest_cant_see_success_message(browser):
     """
-    1. Открываем страницу товара
+    Предусловия: Роль - гость
+    1. Открыть страницу товара
     Ожидаемый результат:
     Нет сообщения об успехе
     """
@@ -99,8 +103,8 @@ def test_guest_cant_see_success_message(browser):
 @pytest.mark.xfail(reason="known_issue, message doesn't disappeared, probably as designed")
 def test_message_disappeared_after_adding_product_to_basket(browser):
     """
-    1. Открываем страницу товара
-    2. Добавляем товар в корзину
+    1. Открыть страницу товара
+    2. Добавить товар в корзину
     Ожидаемый результат:
     Нет сообщения об успехе (оно исчезает)
     """
@@ -112,7 +116,8 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
 
 def test_guest_should_see_login_link_on_product_page(browser):
     """
-    1. Гость открывает страницу товара
+    Предусловия: Роль - гость
+    1. Открыть страницу товара
     Ожидаемый результат:
     На странице есть ссылка логина
     """
@@ -124,8 +129,9 @@ def test_guest_should_see_login_link_on_product_page(browser):
 @pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     """
-    1. Гость открывает страницу товара
-    2. Переходит на страницу логина по ссылке в шапке сайта
+    Предусловия: Роль - гость
+    1. Открыть страницу товара
+    2. Перейти на страницу логина по ссылке в шапке сайта
     Ожидаемый результат:
     1) В адресной строке содержится слово 'login'
     2) На странице есть форма логина
@@ -141,8 +147,9 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 @pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     """
-    1. Гость открывает страницу товара
-    2. Переходит в корзину по кнопке в шапке сайта
+    Предусловия: Роль - гость
+    1. Открыть страницу товара
+    2. Перейти в корзину по кнопке в шапке сайта
     Ожидаемый результат:
     1) В корзине нет товаров
     2) Есть текст о том что корзина пуста
