@@ -1,5 +1,5 @@
 # stepic-auto-final-project
-Final project for Selenium AT course
+Final project for Selenium AT course. Page Object tests for UI store
 
 Добро пожаловать в мой репозиторий с финальным проектом курса Автоматизация тестирования с помощью Selenium и Python! 
 
